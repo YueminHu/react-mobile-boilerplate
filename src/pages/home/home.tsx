@@ -10,7 +10,7 @@ export default (
   <div>
     <p>this is home page</p>
     {props.match.params.id ? (
-      <a onClick={props.history.goBack} >go back!</a>
+      <a onClick={props.history.goBack}>go back!</a>
     ) : (
       <Link to={'/secondary/id'}>goto second page!</Link>
     )}

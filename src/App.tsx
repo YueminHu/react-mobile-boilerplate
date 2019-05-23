@@ -68,7 +68,6 @@ class App extends React.PureComponent<RouteComponentProps, {}> {
               }
             }}
             onEntering={elem => {
-              // elem.style.transition = 'transform 250ms ease-in';
               elem.style.transform = 'none';
             }}
             onEntered={elem => {
