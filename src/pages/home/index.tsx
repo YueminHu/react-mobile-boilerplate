@@ -1,23 +1,10 @@
-import * as React from "react";
-import { RouteComponentProps } from "react-router";
+import * as React from 'react';
+import Home from './home';
+import Loadable from 'components/loadable';
+import RoutePage from 'components/routePage';
 
-import { routeStyles } from "App";
-import { Link } from "react-router-dom";
-
-interface Props extends RouteComponentProps {}
-
-export default class Home extends React.PureComponent<Props, {}> {
-  state = {};
-  static getDerivedStateFromProps(props: Props) {
-    console.log(props.location);
-    return null;
-  }
-  render() {
-    return (
-      <div className={`main`} style={{ ...routeStyles, backgroundColor: "#fff" }}>
-        home
-        <Link to={"/second"}>to second</Link>
-      </div>
-    );
-  }
-}
+export default (props) => (
+  <RoutePage>
+    <Loadable {...props}>{() => import('./home')}</Loadable>
+  </RoutePage>
+);

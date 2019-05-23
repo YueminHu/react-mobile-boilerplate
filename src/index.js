@@ -4,7 +4,7 @@ import { AppContainer } from "react-hot-loader";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import App from "./App";
-import "./style.module.less";
+import "./styles/style.module.less";
 
 const render = Component => {
   ReactDOM.render(
