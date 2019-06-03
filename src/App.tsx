@@ -4,8 +4,7 @@ import {
   Route,
   Switch,
   withRouter,
-  RouteComponentProps,
-  Link
+  RouteComponentProps
 } from 'react-router-dom';
 
 import Secondary from './pages/second';
@@ -31,9 +30,7 @@ let historyGoForward: boolean = false;
 window.addEventListener('popstate', () => (historyGoForward = false));
 
 class App extends React.PureComponent<RouteComponentProps, {}> {
-  state = {
-    headerText: '常见问题'
-  };
+  state = {};
   componentDidMount() {
     const shade = document.querySelector('#loading');
     shade && shade.remove();
@@ -47,62 +44,56 @@ class App extends React.PureComponent<RouteComponentProps, {}> {
     });
   }
   render() {
-    const { location, history, match } = this.props;
+    const { location } = this.props;
     return (
-      <div
-        style={{
-          height: '100%'
-        }}
-      >
-        <TransitionGroup className={'wrapper'}>
-          <CSSTransition
-            key={location.pathname}
-            classNames='fade'
-            timeout={250}
-            onEnter={elem => {
-              elem.style.zIndex = '1';
-              if (historyGoForward) {
-                elem.style.transform = 'translateX(100%)';
-              } else {
-                elem.style.transform = 'translateX(-100%)';
-              }
-            }}
-            onEntering={elem => {
-              elem.style.transform = 'none';
-            }}
-            onEntered={elem => {
-              elem.style.zIndex = elem.style.transform = '';
-            }}
-            onExit={elem => {
-              elem.style.filter = 'brightness(0.7)';
-            }}
-            onExiting={elem => {
-              if (historyGoForward) {
-                elem.style.transform = 'translateX(-20%)';
-              } else {
-                elem.style.transform = 'translateX(20%)';
-              }
-            }}
-            onExited={elem => {
-              elem.style.transform = '';
-            }}
-          >
-            <Switch location={location}>
-              <Route path='/' exact render={props => <Main {...props} />} />
-              <Route
-                path='/secondary/:id'
-                exact
-                render={props => <Secondary {...props} />}
-              />
-              <Route
-                path='/secondary/:id/main'
-                exact
-                render={props => <Main {...props} />}
-              />
-            </Switch>
-          </CSSTransition>
-        </TransitionGroup>
-      </div>
+      <TransitionGroup className={'wrapper'}>
+        <CSSTransition
+          key={location.pathname}
+          classNames='fade'
+          timeout={250}
+          onEnter={elem => {
+            elem.style.zIndex = '1';
+            if (historyGoForward) {
+              elem.style.transform = 'translateX(100%)';
+            } else {
+              elem.style.transform = 'translateX(-100%)';
+            }
+          }}
+          onEntering={elem => {
+            elem.style.transform = 'none';
+          }}
+          onEntered={elem => {
+            elem.style.zIndex = elem.style.transform = '';
+          }}
+          onExit={elem => {
+            elem.style.filter = 'brightness(0.7)';
+          }}
+          onExiting={elem => {
+            if (historyGoForward) {
+              elem.style.transform = 'translateX(-20%)';
+            } else {
+              elem.style.transform = 'translateX(20%)';
+            }
+          }}
+          onExited={elem => {
+            elem.style.transform = '';
+          }}
+        >
+          <Switch location={location}>
+            <Route path='/' exact render={props => <Main {...props} />} />
+            <Route
+              path='/secondary/:id'
+              exact
+              render={props => <Secondary {...props} />}
+            />
+            <Route
+              path='/secondary/:id/main'
+              exact
+              render={props => <Main {...props} />}
+            />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     );
   }
 }

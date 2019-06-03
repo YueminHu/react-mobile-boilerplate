@@ -25,7 +25,7 @@ export default class LoadPage extends React.PureComponent<
       renderIndicator: false
     };
     let shouldRenderIndicator: boolean = true;
-    // 如果是children已经被resolve, 那只需要大改6ms; 如果需要拉取, 则需要大概15+ms
+    // 如果是children已经被resolve, 那只需要大概6ms; 如果需要拉取, 则需要大概15+ms
     setTimeout(() => {
       shouldRenderIndicator &&
         this.setState({
