@@ -24,7 +24,13 @@ class PageTransition extends React.PureComponent<{
   }
   render() {
     return (
-      <TransitionGroup className={'wrapper'}>
+      <TransitionGroup
+        className={'wrapper'}
+        style={{
+          width: '100%',
+          height: '100%'
+        }}
+      >
         <CSSTransition
           key={location.pathname}
           classNames='fade'
