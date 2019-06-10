@@ -71,8 +71,41 @@ export default class LoadPage extends React.PureComponent<
       );
     }
     if (Component) {
-      rendered.push(<Component {...this.props} key={'page'} />);
+      rendered.push(
+        <ErrorBoundary key={'page'}>
+          <Component {...this.props} />
+        </ErrorBoundary>
+      );
     }
     return rendered;
+  }
+}
+
+class ErrorBoundary extends React.PureComponent<{}, { errored: boolean }> {
+  state = {
+      errored: false
+  };
+  componentDidCatch(err: Error, errInfo: React.ErrorInfo) {
+    // 这里可以加上错误上报的逻辑
+      this.setState({
+          errored: true
+      });
+  }
+  render() {
+      if (this.state.errored) {
+          return (
+              <h1
+                  style={{
+                      textAlign: 'center',
+                      marginTop: '8em',
+                      fontSize: '100%',
+                      color: '#aaa'
+                  }}
+              >
+                  加载失败, 请联系开发人员
+              </h1>
+          );
+      }
+      return this.props.children;
   }
 }

@@ -66,7 +66,7 @@ class App extends React.PureComponent<RouteComponentProps, {}> {
             elem.style.zIndex = elem.style.transform = '';
           }}
           onExit={elem => {
-            elem.style.filter = 'brightness(0.7)';
+            // elem.style.filter = 'brightness(0.7)';
           }}
           onExiting={elem => {
             if (historyGoForward) {
