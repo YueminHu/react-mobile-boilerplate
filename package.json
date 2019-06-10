@@ -9,7 +9,8 @@
     "components": "./src/components",
     "assets": "./src/assets",
     "pages": "./src/pages",
-    "App": "./src/App"
+    "App": "./src/App",
+    "hocs": "./src/hocs"
   },
   "scripts": {
     "test": "jest",

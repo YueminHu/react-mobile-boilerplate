@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Loadable from 'components/loadable';
-import RoutePage from 'components/routePage';
+import Loadable from 'hocs/loadable';
+import RoutePage from 'hocs/routePage';
 
 export default props => (
   <RoutePage>
