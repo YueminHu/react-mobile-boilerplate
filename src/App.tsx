@@ -23,12 +23,6 @@ export const routeStyles: React.CSSProperties = {
   transition: 'transform 250ms ease-in, filter 250ms linear'
 };
 
-// 标示用户是要前进还是后退
-// 前进时, 组件从右边出现;
-// 后退时, 组件从左边出现
-let historyGoForward: boolean = false;
-window.addEventListener('popstate', () => (historyGoForward = false));
-
 class App extends React.PureComponent<RouteComponentProps, {}> {
   state = {};
   componentDidMount() {
