@@ -71,7 +71,7 @@ module.exports = (env = {}) => {
       // Required to support async/await
       // "@babel/polyfill"
       // ],
-      main: ["@babel/polyfill", "./src/index"]
+      main: "./src/index"
     },
     output: {
       // config.output.path has to be absolute!
@@ -140,20 +140,13 @@ module.exports = (env = {}) => {
             {
               loader: "css-loader"
             },
-            {
-              loader: "postcss-loader",
-              options: {
-                ident: "postcss",
-                plugins: [
-                  require("autoprefixer")({
-                    add: prodMode,
-                    // react doesn't support ie < 11 anyway, so why css?
-                    // 和babelrc中保持一致
-                    browsers: [">0.25%", "not dead", "not ie <= 11", "not op_mini all"]
-                  })
-                ]
-              }
-            }
+            // {
+            //   loader: "postcss-loader",
+            //   options: {
+            //     ident: "postcss",
+                
+            //   }
+            // }
           ]
         },
         // for NOT less modules
@@ -170,20 +163,13 @@ module.exports = (env = {}) => {
             {
               loader: "css-loader"
             },
-            {
-              loader: "postcss-loader",
-              options: {
-                ident: "postcss",
-                plugins: [
-                  require("autoprefixer")({
-                    add: prodMode,
-                    // react doesn't support ie < 11 anyway, so why css?
-                    // 和babelrc中保持一致
-                    browsers: [">0.25%", "not dead", "not ie <= 11", "not op_mini all"]
-                  })
-                ]
-              }
-            },
+            // {
+            //   loader: "postcss-loader",
+            //   options: {
+            //     ident: "postcss",
+                
+            //   }
+            // },
             {
               loader: "less-loader",
               options: {
@@ -217,19 +203,12 @@ module.exports = (env = {}) => {
             //     modules: true
             //   }
             // },
-            {
-              loader: "postcss-loader",
-              options: {
-                ident: "postcss",
-                plugins: [
-                  require("autoprefixer")({
-                    add: prodMode,
-                    // react doesn't support ie < 11 anyway, so why css?
-                    browsers: [">0.25%", "not dead", "not ie <= 11", "not op_mini all"]
-                  })
-                ]
-              }
-            },
+            // {
+            //   loader: "postcss-loader",
+            //   options: {
+            //     ident: "postcss",
+            //   }
+            // },
             {
               loader: "less-loader",
               options: {
@@ -247,19 +226,12 @@ module.exports = (env = {}) => {
             {
               loader: "css-loader"
             },
-            {
-              loader: "postcss-loader",
-              options: {
-                ident: "postcss",
-                plugins: [
-                  require("autoprefixer")({
-                    add: prodMode,
-                    // react doesn't support ie < 11 anyway, so why css?
-                    browsers: [">0.25%", "not dead", "not ie <= 11", "not op_mini all"]
-                  })
-                ]
-              }
-            },
+            // {
+            //   loader: "postcss-loader",
+            //   options: {
+            //     ident: "postcss",
+            //   }
+            // },
             {
               loader: "sass-loader"
             }

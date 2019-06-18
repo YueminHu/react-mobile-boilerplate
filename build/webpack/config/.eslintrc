@@ -73,7 +73,7 @@
     "no-tabs": "error",
     "no-whitespace-before-property": "error",
     "quote-props": ["error", "as-needed"],
-    "quotes": ["warn", "double"],
+    "quotes": ["warn", "single"],
     "space-before-blocks": "error",
     "space-infix-ops": "error",
     "space-unary-ops": "error",
