@@ -1,9 +1,15 @@
 import * as React from 'react';
 import Loadable from 'hocs/loadable';
 import RoutePage from 'hocs/routePage';
+import Home from './home';
+import { is_dev } from 'config';
 
 export default props => (
   <RoutePage>
-    <Loadable {...props}>{() => import('./home')}</Loadable>
+    {is_dev ? (
+      <Loadable {...props}>{() => import('./home')}</Loadable>
+    ) : (
+      <Home {...props}></Home>
+    )}
   </RoutePage>
 );

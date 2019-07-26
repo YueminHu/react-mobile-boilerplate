@@ -10,25 +10,24 @@
     "assets": "./src/assets",
     "pages": "./src/pages",
     "App": "./src/App",
-    "hocs": "./src/hocs"
+    "hocs": "./src/hocs",
+    "config": "./src/config"
   },
   "scripts": {
-    "test": "jest",
     "dev": "node ./build/bin/index.js dev",
-    "devmock": "npm run mock & npm run dev",
     "build": "node ./build/bin/index.js build",
-    "build:analyze": "node ./build/bin/index.js build:analyze",
-    "mock": "json-server --watch mockData.json --port 9090"
-  },
-  "reactSnap": {
-    "source": "output",
-    "minifyHtml": {
-      "collapseWhitespace": false,
-      "removeComments": false
-    }
+    "build:analyze": "node ./build/bin/index.js build:analyze"
   },
   "license": "ISC",
   "dependencies": {
+    "@hot-loader/react-dom": "^16.8.6",
+    "axios": "^0.18.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router-dom": "^4.3.1",
+    "react-transition-group": "^4.0.0"
+  },
+  "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.6",
@@ -42,7 +41,6 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.2",
     "awesome-typescript-loader": "^5.2.1",
-    "axios": "^0.18.0",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.4",
     "chalk": "^2.4.1",
@@ -66,11 +64,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.3.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
     "react-hot-loader": "^4.3.12",
-    "react-router-dom": "^4.3.1",
-    "react-transition-group": "^4.0.0",
     "regenerator-runtime": "^0.13.2",
     "sass": "^1.14.3",
     "sass-loader": "^7.1.0",
@@ -84,10 +78,6 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.1.9"
-  },
-  "devDependencies": {
-    "jest": "^23.6.0",
-    "json-server": "^0.14.0"
   },
   "home": {
     "development": "/",
