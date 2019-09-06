@@ -2,14 +2,18 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { Link } from 'react-router-dom';
 
-
 export default (
   props: RouteComponentProps<{
     id?: string;
   }>
 ) => (
-  <div>
-    <p>this is home page</p>
+  <div
+    style={{
+      height: '100%',
+      background: 'lightgoldenrodyellow'
+    }}
+  >
+    <div>this is home page</div>
     {props.match.params.id ? (
       <a onClick={props.history.goBack}>go back!</a>
     ) : (

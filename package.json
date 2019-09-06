@@ -2,7 +2,7 @@
   "name": "react-mobild-boilderplate",
   "version": "0.0.1",
   "description": "description",
-  "author": "author",
+  "author": "Yuemin.Hu",
   "alias": {
     "apis": "./src/apis",
     "utils": "./src/utils",
@@ -15,17 +15,19 @@
   },
   "scripts": {
     "dev": "node ./build/bin/index.js dev",
-    "build": "node ./build/bin/index.js build",
-    "build:analyze": "node ./build/bin/index.js build:analyze"
+    "build": "node ./build/bin/index.js build"
   },
   "license": "ISC",
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
     "axios": "^0.18.0",
+    "express": "^4.17.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-hot-loader": "^4.12.12",
     "react-router-dom": "^4.3.1",
-    "react-transition-group": "^4.0.0"
+    "react-transition-group": "^4.0.0",
+    "webpack-dev-middleware": "^3.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -36,7 +38,6 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
-    "@types/express": "^4.16.1",
     "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.2",
@@ -52,7 +53,6 @@
     "eslint": "^5.5.0",
     "eslint-loader": "^2.1.1",
     "eslint-plugin-react": "^7.11.1",
-    "express": "^4.16.4",
     "file-loader": "^2.0.0",
     "fork-ts-checker-webpack-plugin": "^0.5.0",
     "fs-extra": "^7.0.0",
@@ -64,10 +64,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.3.0",
-    "react-hot-loader": "^4.3.12",
     "regenerator-runtime": "^0.13.2",
-    "sass": "^1.14.3",
-    "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.2.1",
@@ -75,7 +72,6 @@
     "typings-for-css-modules-loader": "^1.7.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.20.2",
-    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.1.9"
   },
@@ -83,16 +79,5 @@
     "development": "/",
     "production": "/"
   },
-  "proxy": {
-    "/api/**": {
-      "target": "http://trade.unionbit.net",
-      "secure": false,
-      "changeOrigin": true
-    },
-    "/user/**": {
-      "target": "http://v.unionbit.net",
-      "secure": false,
-      "changeOrigin": true
-    }
-  }
+  "proxy": {}
 }

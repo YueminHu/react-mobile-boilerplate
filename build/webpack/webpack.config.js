@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 
 // general plugins...
 const webpack = require('webpack');
@@ -9,19 +8,12 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 // production plugins...
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-// const MinifyPlugin = require("babel-minify-webpack-plugin");
-// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-// const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const basePath = process.cwd();
 
 const projectInfo = require(path.resolve(basePath, './package.json'));
-// console.log(projectInfo)
-
-let i = 0;
 
 module.exports = (env = {}) => {
   const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -50,7 +42,6 @@ module.exports = (env = {}) => {
     );
   }
 
-  // babelrc customize
   const babelrc = require(path.resolve(__dirname, './config/.babelrc.js'));
 
   const output = env.output || 'output';
@@ -87,31 +78,13 @@ module.exports = (env = {}) => {
       historyApiFallback: true,
       proxy: projectInfo.proxy || {},
       host: '0.0.0.0',
-      disableHostCheck: true
+      disableHostCheck: true,
+      hot: true,
+      hotOnly: true
     },
     mode: NODE_ENV,
     module: {
       rules: [
-        // All output '.js' files will  re-processed by 'source-map-loader' and 'eslint-loader'.
-        {
-          enforce: 'pre',
-          test: /\.jsx?$/,
-          use: [
-            'source-map-loader',
-            {
-              loader: 'eslint-loader',
-              options: {
-                emitWarning: true,
-                failOnWarning: false,
-                // emitError: true,
-                failOnError: true,
-                configFile: path.resolve(__dirname, './config/.eslintrc'),
-                useEslintrc: false
-              }
-            }
-          ],
-          exclude: /(node_modules|bower_components)/
-        },
         // for NOT css/less modules
         {
           test: path => {
@@ -162,20 +135,6 @@ module.exports = (env = {}) => {
               options: {
                 javascriptEnabled: true
               }
-            }
-          ]
-        },
-        {
-          test: /\.(sa|sc)ss$/,
-          use: [
-            {
-              loader: prodMode ? MiniCssExtractPlugin.loader : 'style-loader'
-            },
-            {
-              loader: 'css-loader'
-            },
-            {
-              loader: 'sass-loader'
             }
           ]
         },
@@ -242,51 +201,7 @@ module.exports = (env = {}) => {
               filename: prodMode ? 'app.[contenthash:8].css' : '[name].css',
               chunkFilename: prodMode ? '[id].[contenthash:8].css' : '[id].css'
             }),
-            // will conflict with something...
-            // ------------------------------------
-            // Long Term Caching
-            // ------------------------------------
-            // More information https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31
-            // new webpack.NamedChunksPlugin(chunk => {
-            //   if (chunk.name) {
-            //     return chunk.name;
-            //   } else {
-            //     // console.log(chunk);
-            //     // debugger;
-            //     // return String(++i);
-            //     // 原来的代码会报错, 这里先hack一下...
-            //     return [...chunk._modules][0].context
-            //       ? [...chunk._modules][0].context.replace(/^\/.*\//, "")
-            //       : ++i;
-            //   }
-
-            // eslint-disable-next-line no-underscore-dangle
-            // return [...chunk._modules]
-            //   .map(m =>
-            //     path.relative(
-            //       m.context,
-            //       m.userRequest.substring(0, m.userRequest.lastIndexOf('.'))
-            //     )
-            //   )
-            //   .join('_');
-            // }),
-            new webpack.HashedModuleIdsPlugin(),
-            // ------------------------------------
-            // Inject resulting css file into html...(optional)
-            // ------------------------------------
-            // new HtmlWebpackInlineSourcePlugin(),
-            ifAnalyze
-              ? new BundleAnalyzerPlugin({
-                  port: '9981'
-                })
-              : () => {}
-            // new StyleExtHtmlWebpackPlugin()
-            // new CopyWebpackPlugin([
-            //   {
-            //     from: path.join(__dirname, './public'),
-            //     to: path.join(__dirname, 'output/public')
-            //   }
-            // ])
+            new webpack.HashedModuleIdsPlugin()
           ]
         : []
     ),
@@ -294,17 +209,6 @@ module.exports = (env = {}) => {
       {
         splitChunks: {
           cacheGroups: {
-            // ------------------------------------
-            // this is for multi-entries only
-            // ------------------------------------
-            // commons: {
-            //   name: 'commons',
-            //   chunks: 'initial',
-            //   minChunks: 2
-            // },
-            // ------------------------------------
-            // vendors chunk
-            // ------------------------------------
             vendors: {
               test(module) {
                 // debugger
@@ -319,9 +223,7 @@ module.exports = (env = {}) => {
               name: 'vendors',
               chunks: 'all'
             },
-            // ------------------------------------
-            // react and react-dom chunk
-            // ------------------------------------
+
             react: {
               test(module) {
                 return /[\\/]node_modules[\\/](react|react-dom)[\\/]/.test(
@@ -341,11 +243,7 @@ module.exports = (env = {}) => {
                 parallel: true,
                 sourceMap: true
               }),
-              // new UglifyJsPlugin({
-              //   cache: true,
-              //   parallel: true,
-              //   sourceMap: true // set to true if you want JS source maps
-              // }),
+
               new OptimizeCSSAssetsPlugin({})
             ]
           }

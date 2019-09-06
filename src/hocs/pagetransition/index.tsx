@@ -34,7 +34,7 @@ class PageTransition extends React.PureComponent<{
         <CSSTransition
           key={location.pathname}
           classNames='fade'
-          timeout={250}
+          timeout={300}
           onEnter={elem => {
             elem.style.zIndex = '1';
             if (historyGoForward) {

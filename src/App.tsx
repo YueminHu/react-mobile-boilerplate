@@ -10,6 +10,7 @@ import {
 import { Action } from 'history';
 import Routes from './routes';
 import PageTransition from 'hocs/pagetransition';
+import { hot } from 'react-hot-loader/root';
 
 export const routeStyles: React.CSSProperties = {
   position: 'absolute',
@@ -17,10 +18,9 @@ export const routeStyles: React.CSSProperties = {
   top: '0',
   height: '100%',
   width: '100%',
-  backgroundColor: '#fff',
   boxSizing: 'border-box',
   overflowY: 'scroll',
-  transition: 'transform 250ms ease-in, filter 250ms linear'
+  transition: 'transform 300ms ease-in'
 };
 
 class App extends React.PureComponent<RouteComponentProps, {}> {
@@ -39,4 +39,4 @@ class App extends React.PureComponent<RouteComponentProps, {}> {
   }
 }
 
-export default withRouter(App);
+export default withRouter(hot(App));
