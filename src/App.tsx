@@ -30,12 +30,7 @@ class App extends React.PureComponent<RouteComponentProps, {}> {
     shade && shade.remove();
   }
   render() {
-    const { location, history } = this.props;
-    return (
-      <PageTransition history={history}>
-        <Routes location={location} />
-      </PageTransition>
-    );
+    return <Routes />;
   }
 }
 
