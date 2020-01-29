@@ -2,12 +2,9 @@ module.exports = {
   cacheDirectory: true,
   babelrc: false,
   presets: [
-    [
-      '@babel/preset-env',
-      { targets: { browsers: 'last 2 versions' } } // or whatever your project requires
-    ],
-    '@babel/preset-typescript',
-    '@babel/preset-react'
+    ['@babel/preset-env'],
+    '@babel/preset-react',
+    '@babel/preset-typescript'
   ],
   plugins: [
     // plugin-proposal-decorators is only needed if you're using experimental decorators in TypeScript

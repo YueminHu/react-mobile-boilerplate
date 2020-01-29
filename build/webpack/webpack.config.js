@@ -18,7 +18,6 @@ const projectInfo = require(path.resolve(basePath, './package.json'));
 module.exports = (env = {}) => {
   const NODE_ENV = process.env.NODE_ENV || 'development';
   const prodMode = NODE_ENV === 'production';
-  const ifAnalyze = !!env.analyze;
   const devServerPort = env.devserverPort || 8895;
   const aliasObject = projectInfo.alias
     ? Object.keys(projectInfo.alias).reduce((prev, next) => {

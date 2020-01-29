@@ -12,7 +12,7 @@ npm run dev
 
 and then go to`http://localhost:8080`
 
-### using conjunction with express
+### using in conjunction with express
 
 ```
 NODE_ENV=development node ./start.js
