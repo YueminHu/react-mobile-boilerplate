@@ -9,7 +9,6 @@ export default (
 ) => (
   <div
     style={{
-      height: '100%',
       background: 'lightgoldenrodyellow'
     }}
   >

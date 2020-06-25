@@ -13,5 +13,75 @@
     width: 100%;
     height: 100%;
     -webkit-overflow-scrolling: touch;
-    overflow-y: scroll;
+    position: relative;
+    // overflow-y: scroll;
+    // overflow-y: ;
   }
+
+  // .routepage-wrapper > * {
+  //   width: 100%;
+  //   height: 100%;
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   box-sizing: border-box;
+  //   // overflow-y:;
+  //   transition: transform .3s ease-in;
+  // }
+
+  
+.transition-pan-push-enter {
+  transform: translateX(100%);
+  z-index: 1;
+}
+
+.transition-pan-push-enter.transition-pan-push-enter-active {
+  transform: none;
+  transition: transform 300ms ease-in;
+}
+
+// .transition-pan-push-exit {
+//   // z-index: 1;
+// }
+
+// .transition-pan-push-exit.transition-pan-push-exit-active {
+//   transform: translateX(-20%);
+//   transition: transform 300ms ease-in;
+// }
+
+.transition-pan-pop-enter {
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.transition-pan-pop-enter.transition-pan-pop-enter-active {
+  transform: none;
+  transition: transform 300ms ease-in;
+}
+
+// .transition-pan-pop-exit {
+//   // z-index: 1;
+// }
+
+// .transition-pan-pop-exit.transition-pan-pop-exit-active {
+//   transform: translateX(20%);
+//   transition: transform 300ms ease-in;
+// }
+
+// .transition-pan-exit {
+//   opacity: 1;
+// }
+
+// .transition-pan-exit.transition-pan-exit-active {
+//   opacity: 0.01;
+//   transition: opacity 300ms ease-in;
+// }
+
+.routes-wrapper > div {
+  overflow: hidden;
+  > * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}

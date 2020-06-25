@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 export default (props: RouteComponentProps<{ id: string }>) => (
   <div
     style={{
-      height: '100%',
       background: 'lightblue'
     }}
   >

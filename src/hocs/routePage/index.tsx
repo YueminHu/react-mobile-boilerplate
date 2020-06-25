@@ -1,6 +1,15 @@
 import * as React from 'react';
 
-import { routeStyles } from 'App';
+export const routeStyles: React.CSSProperties = {
+  position: 'absolute',
+  left: 0,
+  top: '0',
+  height: '100%',
+  width: '100%',
+  boxSizing: 'border-box',
+  overflowY: 'scroll',
+  transition: 'transform 300ms ease-in'
+};
 
 export default class RoutePage extends React.PureComponent<{}, {}> {
   render() {

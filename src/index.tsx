@@ -1,12 +1,12 @@
 import 'react-hot-loader';
-import React from 'react';
+import * as React from 'react';
 
 // polyfill
 
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+// import 'core-js/stable';
+// import 'regenerator-runtime/runtime';
 
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 // import { AppContainer } from 'react-hot-loader';
 
 import App from './App';
