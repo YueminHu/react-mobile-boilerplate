@@ -8,25 +8,33 @@ import Main from './pages/home';
 
 let historyGoForward: boolean = true;
 window.addEventListener('popstate', () => (historyGoForward = false));
+// win
 
 const duration = 300
 
 const Routes = (props: RouteComponentProps) => {
-  // console.log(props)
   const { history, location } = props;
   React.useEffect(() => {
     history.listen((_location, action) => {
-      if (action === 'PUSH') {
+      if (action === 'PUSH')
+      {
         historyGoForward = true;
-      } else if (action === 'POP') {
+      } else if (action === 'POP')
+      {
         historyGoForward = false;
       }
-      console.log(action)
     });
   }, [])
-  console.log(historyGoForward)
   return <div className='routes-wrapper'><TransitionGroup>
-    <CSSTransition key={location.key} timeout={{ enter: duration, exit: duration }} classNames={`transition-pan-${historyGoForward ? 'push' : 'pop'}`}>
+    <CSSTransition key={location.key} timeout={{ enter: duration, exit: duration }} classNames={`transition-pan-${historyGoForward ? 'push' : 'pop'}`} onExiting={(elem: HTMLElement) => {
+      if (historyGoForward)
+      {
+        elem.style.transform = 'translateX(-20%)';
+      } else
+      {
+        elem.style.transform = 'translateX(20%)';
+      }
+    }}>
 
       <Switch location={location}>
         <Route path='/' exact component={Main} />
